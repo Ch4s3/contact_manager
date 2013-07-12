@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem 'pg'
-
 gem 'unicorn'
 
 # Use SCSS for stylesheets
@@ -33,7 +31,12 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
