@@ -20,8 +20,11 @@ describe Person do
     expect(person).not_to be_valid
   end
 
-  it 'has and array of phone numbers' do
+  it 'has an array of phone numbers' do
     expect(person.phone_numbers).to eq([])
   end
 
+  it 'has an array of e-mail addresses' do
+    expect(person.email_addresses).to eq([])
+  end
 end
