@@ -11,14 +11,19 @@
     </div>
   <% end %>
 
-  <div class="hidden_field">
+
+  <div class="field">
     <%= f.label :number %><br>
     <%= f.text_field :number %>
   </div>
-  <div class="field">
-  <br>
-    <%= f.number_field :person_id %>
+
+  <div class="id_field">
+    <%= f.hidden_field(:contact_id) %>
   </div>
+  <div class = 'contact_type__field'>
+    <%= f.hidden_field(:contact_type) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

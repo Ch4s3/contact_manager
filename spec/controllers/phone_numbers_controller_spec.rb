@@ -3,8 +3,9 @@ require 'spec_helper'
 describe PhoneNumbersController do
 
   def valid_attributes
-    { "number" => "MyString", "person_id" =>1 }
+    { "number" => "MyString", "contact_id" => 1, "contact_type" => "Person" }
   end
+
 
   let(:valid_session) { {} }
 
@@ -42,7 +43,7 @@ describe PhoneNumbersController do
   describe "POST create" do
     describe "with valid params" do
       let (:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-      let(:valid_attributes) { {number: '555-1234', person_id: alice.id} }
+      let(:valid_attributes) { {number: '555-1234', contact_id: alice.id, contact_type: 'Person'} }
 
       it "creates a new PhoneNumber" do
         expect {
@@ -77,7 +78,7 @@ describe PhoneNumbersController do
   describe "PUT update" do
     describe "with valid params" do
       let(:bob) { Person.create(first_name: 'Bob', last_name: 'Jones') }
-      let(:valid_attributes) { {number: '555-5678', person_id: bob.id} }
+      let(:valid_attributes) { {number: '555-5678', contact_id: bob.id, contact_type: 'Person'} }
 
       it "updates the requested phone_number" do
         phone_number = PhoneNumber.create! valid_attributes
@@ -124,7 +125,7 @@ describe PhoneNumbersController do
 
   describe "DELETE destroy" do
     let (:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-    let(:valid_attributes) { {number: '555-1234', person_id: alice.id} }
+    let(:valid_attributes) { {number: '555-1234', contact_id: alice.id, contact_type: 'Person'} }
 
     it "destroys the requested phone_number" do
       phone_number = PhoneNumber.create! valid_attributes
