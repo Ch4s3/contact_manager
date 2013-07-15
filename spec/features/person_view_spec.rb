@@ -50,3 +50,33 @@ describe 'the person view', type: :feature do
   end
 
 end
+
+describe 'display email addresses' do
+
+  let(:person) { Person.create(first_name: 'John', last_name: 'Doe') }
+
+  before(:each) do
+    person.email_addresses.create(address: "jon@test.com")
+    person.email_addresses.create(address: "jon.j@spec.com")
+    visit person_path(person)
+  end
+
+  it 'edits an email address' do
+    email_address = person.email_addresses.first
+    old_email = email_address.address
+
+    first(:link, 'edit').click
+    page.fill_in('Address', with: 'foo@test.com')
+    page.click_button('Update Email address')
+    expect(current_path).to eq(person_path(person))
+    expect(page).to have_content('foo@test.com')
+    expect(page).to_not have_content(old_email)
+  end
+
+  it 'shows the email addresses' do
+    person.email_addresses.each do |email_address|
+      expect(page).to have_content(email_address.address)
+    end
+  end
+
+end
