@@ -5,11 +5,13 @@ describe "phone_numbers/index" do
     assign(:phone_numbers, [
       stub_model(PhoneNumber,
         :number => "Number",
-        :person_id => 1
+        :contact_id => 1,
+        :contact_type => "Person"
       ),
       stub_model(PhoneNumber,
         :number => "Number",
-        :person_id => 1
+        :contact_id => 1,
+        :contact_type => "Person"
       )
     ])
   end

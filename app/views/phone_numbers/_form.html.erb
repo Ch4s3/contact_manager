@@ -15,10 +15,14 @@
     <%= f.label :number %><br>
     <%= f.text_field :number %>
   </div>
+
   <div class="hidden_field">
-  <br>
-    <%= f.hidden_field :person_id %>
+    <%= f.hidden_field :contact_id %>
   </div>
+  <div class="hidden_field">
+    <%= f.hidden_field :contact_type %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -5,7 +5,7 @@
   <%= @person.first_name %>
 </p>
 
-<p>
+<p>rails form helpers pass multiple params in link
   <strong>Last name:</strong>
   <%= @person.last_name %>
 </p>
@@ -28,7 +28,7 @@
     </ul>
 </p>
 
-<%= link_to 'Add phone number', new_phone_number_path(person_id: @person.id) %>
+<%= link_to 'Add phone number', new_phone_number_path(contact_id: @person.id, contact_type: 'Person') %>
 <%= link_to 'Add e-mail address', new_email_address_path(person_id: @person.id) %>
 <%= link_to 'Edit', edit_person_path(@person) %>
 <%= link_to 'Back', people_path %>

@@ -9,8 +9,8 @@ describe 'the person view', type: :feature do
   describe 'phone numbers' do
 
     before(:each) do
-      person.phone_numbers.create(number: "555-2325", person_id: person.id)
-      person.phone_numbers.create(number: "555-2324", person_id: person.id)
+      person.phone_numbers.create(number: "555-2325", contact_id: person.id)
+      person.phone_numbers.create(number: "555-2324", contact_id: person.id)
       visit person_path(person)
     end
 
@@ -21,7 +21,7 @@ describe 'the person view', type: :feature do
     end
 
     it 'has a link to add a new phone number' do
-      expect(page).to have_link('Add phone number', href: new_phone_number_path(person_id: person.id))
+      expect(page).to have_link('Add phone number', href: new_phone_number_path(contact_id: person.id, contact_type: "Person"))
     end
 
     it 'has links to edit phone numbers' do
@@ -47,7 +47,7 @@ describe 'the person view', type: :feature do
       page.click_link('Add phone number')
       page.fill_in('Number', with: '555-8888')
       page.click_button('Create Phone number')
-      expect(current_path).to eq(person_path(person))
+      expect(current_path).to eq(person_path(person.id))
       expect(page).to have_content('555-8888')
     end
   end
