@@ -5,6 +5,11 @@
   <%= @company.name %>
 </p>
 
+
+
+
+
+
 <p>
   <strong>Number(s)</strong>
     <ul>
@@ -22,7 +27,6 @@
       <% end %>
     </ul>
 </p>
-
 
 <%= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company') %>
 <%= link_to 'Add e-mail address', new_email_address_path(contact_id: @company.id, contact_type: 'Company') %>
