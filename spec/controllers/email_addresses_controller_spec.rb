@@ -2,13 +2,10 @@ require 'spec_helper'
 
 describe EmailAddressesController do
 
-<<<<<<< HEAD
-  let(:valid_attributes) { { "address" => "MyString", "person_id" => 1 } }
-=======
   def valid_attributes
     { "address" => "MyString", "person_id" =>1 }
   end
->>>>>>> implement-email-addresses
+
 
   let(:valid_session) { {} }
 
@@ -45,13 +42,9 @@ describe EmailAddressesController do
 
   describe "POST create" do
     describe "with valid params" do
-<<<<<<< HEAD
+
       let (:bob) { Person.create(first_name: 'Bob', last_name: 'Jones') }
       let(:valid_attributes) { {address: 'alice@test.com', person_id: bob.id} }
-=======
-      let (:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-      let(:valid_attributes) { {address: 'alice.s@test.com', person_id: alice.id} }
->>>>>>> implement-email-addresses
 
       it "creates a new EmailAddress" do
         expect {
@@ -64,14 +57,11 @@ describe EmailAddressesController do
         assigns(:email_address).should be_a(EmailAddress)
         assigns(:email_address).should be_persisted
       end
-<<<<<<< HEAD
 
       it "redirects to the person" do
         post :create, {:email_address => valid_attributes}, valid_session
         response.should redirect_to(bob)
       end
-=======
->>>>>>> implement-email-addresses
     end
 
     describe "with invalid params" do
@@ -93,14 +83,9 @@ describe EmailAddressesController do
 
   describe "PUT update" do
     describe "with valid params" do
-<<<<<<< HEAD
-      let (:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-      let(:valid_attributes) { {address: 'alice@test.com', person_id: alice.id} }
-=======
-
       let(:bob) { Person.create(first_name: 'Bob', last_name: 'Jones') }
       let(:valid_attributes) { {address: 'bob@bob.co', person_id: bob.id} }
->>>>>>> implement-email-addresses
+
 
       it "updates the requested email_address" do
         email_address = EmailAddress.create! valid_attributes
@@ -121,11 +106,8 @@ describe EmailAddressesController do
       it "redirects to the person" do
         email_address = EmailAddress.create! valid_attributes
         put :update, {:id => email_address.to_param, :email_address => valid_attributes}, valid_session
-<<<<<<< HEAD
-        response.should redirect_to(alice)
-=======
         expect(response).to redirect_to(bob)
->>>>>>> implement-email-addresses
+
       end
     end
 
@@ -150,11 +132,8 @@ describe EmailAddressesController do
 
   describe "DELETE destroy" do
     let (:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-<<<<<<< HEAD
     let(:valid_attributes) { {address: 'alice@test.com', person_id: alice.id} }
-=======
     let(:valid_attributes) { {address: '15_kittens82@hotmail.com', person_id: alice.id} }
->>>>>>> implement-email-addresses
 
     it "destroys the requested email_address" do
       email_address = EmailAddress.create! valid_attributes
@@ -163,16 +142,6 @@ describe EmailAddressesController do
       }.to change(EmailAddress, :count).by(-1)
     end
 
-<<<<<<< HEAD
-    it "redirects to the email_address' person" do
-      email_address = EmailAddress.create! valid_attributes
-      delete :destroy, {:id => email_address.to_param}, valid_session
-      response.should redirect_to(alice)
-    end
-  end
-
-end
-=======
     it "redirects to the email_addresses list" do
       email_address = EmailAddress.create! valid_attributes
       delete :destroy, {:id => email_address.to_param}, valid_session
@@ -181,4 +150,3 @@ end
   end
 
 end
->>>>>>> implement-email-addresses
