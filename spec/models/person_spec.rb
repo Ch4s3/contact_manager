@@ -20,11 +20,14 @@ describe Person do
     expect(person).not_to be_valid
   end
 
-  it 'has an array of phone numbers' do
-    expect(person.phone_numbers).to eq([])
+  it 'responds with its created phone numbers' do
+    person.phone_numbers.build(number: '555-6666')
+    expect(person.phone_numbers.map(&:number)).to eq(['555-6666'])
   end
 
-  it 'has an array of e-mail addresses' do
-    expect(person.email_addresses).to eq([])
+  it 'responds with its created e-mail addresses' do
+    person.email_addresses.build(address: '1@23.com')
+    expect(person.email_addresses.map(&:address)).to eq(['1@23.com'])
   end
+
 end
