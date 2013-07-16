@@ -95,7 +95,7 @@ describe PhoneNumbersController do
         assigns(:phone_number).should eq(phone_number)
       end
 
-      it "redirects to the phone_number" do
+      it "redirects to the person" do
         phone_number = PhoneNumber.create! valid_attributes
           put :update, {:id => phone_number.to_param, :phone_number => valid_attributes}, valid_session
           expect(response).to redirect_to(bob)
