@@ -11,13 +11,13 @@
     </div>
   <% end %>
 
-  <div class="hidden_field">
+  <div class="field">
     <%= f.label :number %><br>
     <%= f.text_field :number %>
   </div>
-  <div class="field">
+  <div class="hidden_field">
   <br>
-    <%= f.number_field :person_id %>
+    <%= f.hidden_field :person_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

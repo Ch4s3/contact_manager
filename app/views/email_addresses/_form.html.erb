@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<<<<<<< HEAD
   <div class="hidden_field">
     <%= f.label :address %><br>
     <%= f.text_field :address %>
@@ -18,6 +19,15 @@
   <div class="field">
     <br>
     <%= f.number_field :person_id %>
+=======
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="hidden_field">
+
+    <%= f.hidden_field :person_id %>
+>>>>>>> implement-email-addresses
   </div>
   <div class="actions">
     <%= f.submit %>
