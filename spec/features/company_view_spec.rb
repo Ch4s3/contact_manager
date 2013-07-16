@@ -51,7 +51,34 @@ describe 'the company view', type: :feature do
       expect(page).to have_content('555-8888')
     end
 
-
   end
 
+  describe 'e-mail addresses' do
+    let(:company) { Company.create(name: "Bob Oblob's Law Blog") }
+
+    before(:each) do
+      company.email_addresses.create(address: "test1@test.com", contact_id: company.id)
+      person.email_addresses.create(address: "foo@bar.com", contact_id: company.id)
+      visit company_path(company)
+    end
+
+    it 'shows email addresses' do
+      company.email_addresses.each do |email_address|
+        expect(page).to have_selector('li', text: email_address.address)
+      end
+    end
+
+    it' has an add email address link' do
+      expect(page).to have_link('Add e-mail address', href: new_email_address_path(person_id: person.id))
+    end
+
+    it 'adds a new email address' do
+      page.click_link('Add e-mail address')
+      page.fill_in('Address', with: 'foo@bar.com')
+      page.click_button('Create Email address')
+      expect(current_path).to eq(company_path(company))
+      expect(page).to have_content('foo@bar.com')
+    end
+
+  end
 end
