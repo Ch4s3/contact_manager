@@ -6,15 +6,7 @@
 </p>
 
 <%= render 'phone_numbers/phone_numbers', :phone_numbers => @company.phone_numbers%>
-
-<p>
-  <strong>E-mail Address(es)</strong>
-    <ul>
-      <% @company.email_addresses.each do |email_address| %>
-        <li><%= email_address.address %> <%= link_to('edit', edit_email_address_path(email_address)) %></li>
-      <% end %>
-    </ul>
-</p>
+<%= render 'email_addresses/email_addresses', :email_addresses => @company.email_addresses%>
 
 <%= link_to 'Add phone number', new_phone_number_path(contact_id: @company.id, contact_type: 'Company') %>
 <%= link_to 'Add e-mail address', new_email_address_path(contact_id: @company.id, contact_type: 'Company') %>
