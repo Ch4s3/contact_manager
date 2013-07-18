@@ -3,7 +3,7 @@ require 'spec_helper'
 describe EmailAddressesController do
 
   def valid_attributes
-    { "address" => "MyString", "person_id" =>1 }
+    { "address" => "MyString", "contact_id" => 1, "contact_type"=> "Person" }
   end
 
 
@@ -44,7 +44,7 @@ describe EmailAddressesController do
     describe "with valid params" do
 
       let (:bob) { Person.create(first_name: 'Bob', last_name: 'Jones') }
-      let(:valid_attributes) { {address: 'alice@test.com', person_id: bob.id} }
+      let(:valid_attributes) { {address: 'bob@test.com', contact_id: bob.id, contact_type: 'Person'} }
 
       it "creates a new EmailAddress" do
         expect {
@@ -60,7 +60,7 @@ describe EmailAddressesController do
 
       it "redirects to the person" do
         post :create, {:email_address => valid_attributes}, valid_session
-        response.should redirect_to(bob)
+        response.should redirect_to(person_path(bob))
       end
     end
 
@@ -84,7 +84,7 @@ describe EmailAddressesController do
   describe "PUT update" do
     describe "with valid params" do
       let(:bob) { Person.create(first_name: 'Bob', last_name: 'Jones') }
-      let(:valid_attributes) { {address: 'bob@bob.co', person_id: bob.id} }
+      let(:valid_attributes) { {address: 'bob@bob.co', contact_id: bob.id, contact_type: 'Person'} }
 
 
       it "updates the requested email_address" do
@@ -106,7 +106,7 @@ describe EmailAddressesController do
       it "redirects to the person" do
         email_address = EmailAddress.create! valid_attributes
         put :update, {:id => email_address.to_param, :email_address => valid_attributes}, valid_session
-        expect(response).to redirect_to(bob)
+        expect(response).to redirect_to(person_path(bob))
 
       end
     end
@@ -132,8 +132,8 @@ describe EmailAddressesController do
 
   describe "DELETE destroy" do
     let (:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
-    let(:valid_attributes) { {address: 'alice@test.com', person_id: alice.id} }
-    let(:valid_attributes) { {address: '15_kittens82@hotmail.com', person_id: alice.id} }
+    let(:valid_attributes) { {address: 'alice@test.com', contact_id: alice.id, contact_type: 'Person'} }
+    let(:valid_attributes) { {address: '15_kittens82@hotmail.com', contact_id: alice.id, contact_type: 'Person' } }
 
     it "destroys the requested email_address" do
       email_address = EmailAddress.create! valid_attributes
@@ -145,7 +145,7 @@ describe EmailAddressesController do
     it "redirects to the email_addresses list" do
       email_address = EmailAddress.create! valid_attributes
       delete :destroy, {:id => email_address.to_param}, valid_session
-      expect(response).to redirect_to(alice)
+      expect(response).to redirect_to(person_path(alice))
     end
   end
 

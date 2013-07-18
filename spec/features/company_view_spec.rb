@@ -58,7 +58,7 @@ describe 'the company view', type: :feature do
 
     before(:each) do
       company.email_addresses.create(address: "test1@test.com", contact_id: company.id)
-      person.email_addresses.create(address: "foo@bar.com", contact_id: company.id)
+      company.email_addresses.create(address: "foo@bar.com", contact_id: company.id)
       visit company_path(company)
     end
 
@@ -69,7 +69,7 @@ describe 'the company view', type: :feature do
     end
 
     it' has an add email address link' do
-      expect(page).to have_link('Add e-mail address', href: new_email_address_path(person_id: person.id))
+      expect(page).to have_link('Add e-mail address', href: new_email_address_path(contact_id: company.id, contact_type: 'Company'))
     end
 
     it 'adds a new email address' do
