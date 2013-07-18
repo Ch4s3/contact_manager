@@ -1,4 +1,6 @@
 class PhoneNumbersController < ApplicationController
+
+  before_filter :lookup_phone_number, only: [:edit, :update, :destroy]
   before_action :set_phone_number, only: [:show, :edit, :update, :destroy]
 
   # GET /phone_numbers/new
@@ -60,4 +62,9 @@ class PhoneNumbersController < ApplicationController
   def phone_number_params
     params.require(:phone_number).permit(:number, :contact_id, :contact_type)
   end
+
+  def lookup_phone_number
+    @phone_number = PhoneNumber.find(params[:id])
+  end
+
 end
