@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @phone_number %> |
-<%= link_to 'Back', phone_numbers_path %>
+<%= link_to 'Back', person_path(@phone_number.contact_id) %>

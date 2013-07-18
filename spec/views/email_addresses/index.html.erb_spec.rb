@@ -5,11 +5,13 @@ describe "email_addresses/index" do
     assign(:email_addresses, [
       stub_model(EmailAddress,
         :address => "Address",
-        :person_id => 1
+        :contact_id => 1,
+        :contact_type => "Person"
       ),
       stub_model(EmailAddress,
         :address => "Address",
-        :person_id => 1
+        :contact_id => 1,
+        :contact_type => "Person"
       )
     ])
   end
