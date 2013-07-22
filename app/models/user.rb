@@ -9,4 +9,6 @@ def self.find_or_create_by_auth(auth_data)
   user
 end
 
+has_many :people
+
 end

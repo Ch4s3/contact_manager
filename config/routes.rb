@@ -7,9 +7,8 @@ ContactManager::Application.routes.draw do
 
   get '/auth/:provider/callback' => 'sessions#create'
 
-  resource :sessions, :only => [:create]
+  resource :sessions, :only => [:create, :destroy]
   root :to => 'site#index'
   get "/login" => redirect("/auth/twitter"), as: :login
   delete "/logout" => "sessions#destroy", as: :logout
-  #root to: 'site#index'
 end
