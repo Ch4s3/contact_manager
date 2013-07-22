@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Person do
 
-  let (:person) do
-    person = Person.new(first_name: 'Liz', last_name: 'White')
-  end
+  let (:person) { Fabricate(:person) }
 
   it 'is valid' do
     expect(person).to be_valid
@@ -18,6 +16,10 @@ describe Person do
   it 'is invalid without a last name' do
     person.last_name = nil
     expect(person).not_to be_valid
+  end
+
+  it 'is a child of the user' do
+    expect(person.user).to be_instance_of(User)
   end
 
   it 'responds with its created phone numbers' do

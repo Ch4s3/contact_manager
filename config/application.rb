@@ -6,9 +6,10 @@ Bundler.require(:default, Rails.env)
 
 module ContactManager
   class Application < Rails::Application
-    config.generators do  |g|
-      g.test_framework        :rspec, fixture: true
-      g.fixture_replacement   :fabrication
+    config.generators do |g|
+      g.test_framework      :rspec, fixture: true
+      g.fixture_replacement :fabrication
     end
+
   end
 end

@@ -6,4 +6,6 @@ class Person < ActiveRecord::Base
   " #{first_name} #{last_name} "
   end
 
+  belongs_to :user
+
 end

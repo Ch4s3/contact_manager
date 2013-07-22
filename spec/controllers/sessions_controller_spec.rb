@@ -12,21 +12,20 @@ end
 describe 'the appliaction', type: :feature do
   context 'when logged in' do
     before(:each) do
-      ContactManager::Application.routes.tap do |routes|
-        # rou tes.disable_clear_and_finalize = true
-        ContactManager::Application.routes.draw do
-          resource :sessions, :only => [:create, :destroy]
-          #root to: 'site#index'
-          get '/fake_login' => 'fake_sessions#create', as: :fake_login
-          #get '/login' => redirect('/auth/twitter'), as: :login
-        end
+      #binding.pry
+      Rails.application.routes.draw do
+        root to: 'site#index'
+        get '/fake_login' => 'fake_sessions#create', as: :fake_login
+        get '/login' => redirect('/auth/twitter'), as: :login
+        delete "/logout" => "sessions#destroy", as: :logout
       end
-      user = User.create(name: 'Jane Doe')
-      visit fake_login_path(:user_id => user.id)
+      #binding.pry
+      @user = User.create(name: 'Jane Doe')
+      visit fake_login_path(:user_id => @user.id)
     end
 
     after(:each) do
-      ContactManager::Application.reload_routes!
+      Rails.application.reload_routes!
     end
 
     it 'has a logout link' do

@@ -46,5 +46,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'capybara'
   gem 'fabrication'
+  gem 'pry-rails'
 end
 

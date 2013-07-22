@@ -10,5 +10,6 @@ def self.find_or_create_by_auth(auth_data)
 end
 
 has_many :people
+has_many :companies
 
 end

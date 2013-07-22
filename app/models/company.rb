@@ -6,4 +6,6 @@ class Company < ActiveRecord::Base
   " #{name}"
   end
 
+  belongs_to :user
+
 end
