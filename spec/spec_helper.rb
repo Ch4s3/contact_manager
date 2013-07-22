@@ -19,6 +19,8 @@ RSpec.configure do |config|
 
   config.include Capybara::DSL, :type => :request
 
+  Rails.application.routes.default_url_options[:host] = 'test.host'
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
