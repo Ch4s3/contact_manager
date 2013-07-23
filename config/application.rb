@@ -13,6 +13,4 @@ module ContactManager
 
   end
 
-  config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery_ujs)
-
 end
