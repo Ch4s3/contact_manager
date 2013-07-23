@@ -3,7 +3,6 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 describe 'the company view', type: :feature do
-
   let(:company) { Company.create(name: "Bob Oblob's Law Blog") }
 
   describe 'phone numbers' do

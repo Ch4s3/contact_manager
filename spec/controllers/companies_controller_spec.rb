@@ -2,14 +2,21 @@ require 'spec_helper'
 
 describe CompaniesController do
 
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:user) { Fabricate(:user) }
 
-  let(:valid_session) { {} }
+  def valid_attributes
+    { "name" => "MyString", "user_id" => user.id }
+  end
+
+  def valid_session
+    {user_id: user.id}
+  end
 
   describe "GET index" do
     it "assigns all companies as @companies" do
-      company = Company.create! valid_attributes
-      get :index, {}, valid_session
+      user = User.create
+      company = Company.create! valid_attributes.merge(user_id: user.id)
+      get :index, {}, {:user_id => user.id}
       assigns(:companies).should eq([company])
     end
   end

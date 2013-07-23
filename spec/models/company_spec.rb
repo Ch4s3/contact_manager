@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Company do
-   let(:company) { Company.new(name: "Bob Oblob's Law Blog") }
+
+   let (:company) { Fabricate(:company) }
 
   it 'is valid' do
     expect(company).to be_valid

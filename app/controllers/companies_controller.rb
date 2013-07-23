@@ -4,12 +4,16 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = current_user.companies(user_id: params[:id])
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
+  end
+
+    def lookup_company
+    @company = current_user.people.find(params[:id])
   end
 
   # GET /companies/new
@@ -25,6 +29,7 @@ class CompaniesController < ApplicationController
   # POST /companies.json
   def create
     @company = Company.new(company_params)
+    @company.user_id = current_user.id
 
     respond_to do |format|
       if @company.save
@@ -69,6 +74,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name)
+      params.require(:company).permit(:name, :user_id)
     end
 end
