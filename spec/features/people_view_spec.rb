@@ -25,7 +25,6 @@ describe 'the people view', type: :feature do
       login_as(user_2)
       visit(people_path)
       expect(page).not_to have_text(person_1.to_s)
-      #this ^ is written incorrectly as user_2 will be the same as user 1
     end
 
   end
