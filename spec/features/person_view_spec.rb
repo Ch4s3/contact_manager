@@ -17,9 +17,8 @@ describe 'the person view', type: :feature do
     end
 
     it 'shows the phone numbers' do
-      person.phone_numbers.each do |phone|
-        expect(page).to have_content(phone.number)
-      end
+      expect(page).to have_content("555-2325")
+      expect(page).to have_content("555-2324")
     end
 
     it 'has a link to add a new phone number' do
@@ -52,6 +51,15 @@ describe 'the person view', type: :feature do
       expect(current_path).to eq(person_path(person.id))
       expect(page).to have_content('555-8888')
     end
+
+    it 'formats a number correctly' do
+      page.click_link('Add phone number')
+      page.fill_in('Number', with: '5558888')
+      page.click_button('Create Phone number')
+      expect(current_path).to eq(person_path(person.id))
+      expect(page).to have_content('555-8888')
+    end
+
   end
 
   describe 'e-mail addresses' do

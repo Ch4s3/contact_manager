@@ -13,6 +13,16 @@ describe PhoneNumber do
     expect(phone_number).to_not be_valid
   end
 
+  it 'is invalid with more than 11 numbers' do
+    number = PhoneNumber.new(number: "123-456-555-6666", contact_id: 1, contact_type: 'Person')
+    expect(number).to_not be_valid
+  end
+
+  it 'is invalid with fewer than 7 numbers' do
+    number = PhoneNumber.new(number: "5-6666", contact_id: 1, contact_type: 'Person')
+    expect(number).to_not be_valid
+  end
+
   it 'must have a reference to a contact' do
     phone_number.contact_id = nil
     expect(phone_number).not_to be_valid

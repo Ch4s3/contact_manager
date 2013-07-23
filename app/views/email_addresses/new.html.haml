@@ -1,4 +1,4 @@
 %h1
   = "New Email Address for #{@email_address.contact}"
 = render 'form'
-= link_to 'Back', email_addresses_path
+= link_to 'Back', @email_address.contact

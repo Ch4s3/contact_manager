@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "phone_numbers/new" do
   before(:each) do
     assign(:phone_number, stub_model(PhoneNumber,
-      :number => "MyString",
+      :number => "1234567",
       :contact_id => 1,
       :contact_type => "Person"
     ).as_new_record)

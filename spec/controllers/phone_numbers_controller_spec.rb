@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PhoneNumbersController do
 
   def valid_attributes
-    { "number" => "MyString", "contact_id" => 1, "contact_type"=> "Person" }
+    { "number" => "1234567", "contact_id" => 1, "contact_type"=> "Person" }
   end
 
   let(:valid_session) { {} }

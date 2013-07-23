@@ -14,9 +14,8 @@ describe 'the company view', type: :feature do
     end
 
     it 'shows the phone numbers' do
-      company.phone_numbers.each do |phone|
-        expect(page).to have_content(phone.number)
-      end
+      expect(page).to have_content("555-2325")
+      expect(page).to have_content("555-2324")
     end
 
     it 'has a link to add a new phone number' do

@@ -26,7 +26,6 @@ describe 'the people view', type: :feature do
       visit(people_path)
       expect(page).not_to have_text(person_1.to_s)
     end
-
   end
 
 end
