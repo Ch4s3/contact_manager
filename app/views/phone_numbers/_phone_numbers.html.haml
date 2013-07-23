@@ -5,4 +5,4 @@
       %li
         = number_to_phone(phone.number)
         = link_to('edit', edit_phone_number_path(phone))
-        = link_to 'delete', phone.number, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to 'delete', phone, method: :delete, data: { confirm: 'Are you sure?' }
