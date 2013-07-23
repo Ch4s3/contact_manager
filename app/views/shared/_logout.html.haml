@@ -1,0 +1,3 @@
+%p.logout{:style=> "text-align: right; font-size: .75em;"}
+  -if current_user
+    =link_to "Logout", logout_path, id: "logout", method: 'delete'
